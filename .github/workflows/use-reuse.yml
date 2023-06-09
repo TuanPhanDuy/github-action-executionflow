@@ -70,6 +70,8 @@ jobs:
     uses: ./.github/workflows/reusable-flow.yml # adding path to reusable-flow.yml
     with:
       artifact-name: dist-files # adding artifact to call reusable flow
+    secrets:
+      some-secret: ${{ secrets.some-secret }}
   report:
     needs: [lint, deploy]
     if: failure()
