@@ -68,6 +68,8 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable-flow.yml # adding path to reusable-flow.yml
+    with:
+      artifact-name: dist-files # adding artifact to call reusable flow
   report:
     needs: [lint, deploy]
     if: failure()
