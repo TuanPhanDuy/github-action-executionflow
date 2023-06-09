@@ -38,7 +38,6 @@ jobs:
       - name: Test code
         run: npm run test
       - name: Upload test report
-        continue-on-error: true
         if: failure() && steps.run-tests.outcome == 'failure' # Special conditional failure
         uses: actions/upload-artifact@v3
         with:
