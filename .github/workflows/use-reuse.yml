@@ -72,6 +72,12 @@ jobs:
       artifact-name: dist-files # adding artifact to call reusable flow
     secrets:
       some-secret: ${{ secrets.some-secret }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deploy output
+        run: echo ${{ needs.deploy.outputs.result }} # getting output information from resuable flow
   report:
     needs: [lint, deploy]
     if: failure()
